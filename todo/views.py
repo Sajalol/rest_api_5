@@ -14,10 +14,10 @@ API Overview
 def apiOverview(request):
     api_urls = {
         'List' : '/task-list/',
-        'Detail View' : '/task-detail/<str:pk>/',
+        'Detail View' : '/task-detail/<int:pk>/',
         'Create' : '/task-create/',
-        'Update' : '/task-update/<str:pk>/',
-        'Delete' : '/task-delete/<str:pk>/',
+        'Update' : '/task-update/<int:pk>/',
+        'Delete' : '/task-delete/<int:pk>/',
     }
     return Response(api_urls)
 
