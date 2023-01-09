@@ -40,7 +40,7 @@ def taskDetail(request, pk):
 
 "Update single post"
 
-@api_view(['POST'])
+@api_view(['GET', 'POST'])
 def taskUpdate(request, pk):
     task = Task.objects.get(id = pk)
     serializer = TaskSerializer(instance=task, data=request.data)
