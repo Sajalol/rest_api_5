@@ -24,3 +24,6 @@ class Task(models.Model):
     attachements = models.FileField(upload_to='images/', blank=True)
     completed = models.BooleanField(default=False, blank=True,       null=True)
     objects = models.Manager()
+
+    def __str__(self):
+        return str(self.title)
