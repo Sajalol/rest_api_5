@@ -17,6 +17,7 @@ from django.urls import path, include
 from django.contrib import admin
 from django.contrib.auth.models import User
 from rest_framework import routers, serializers, viewsets
+from .views import root_route
 
 # Serializers define the API representation.
 class UserSerializer(serializers.HyperlinkedModelSerializer):
@@ -36,7 +37,7 @@ router.register(r'users', UserViewSet)
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
 urlpatterns = [
-    path('', include(router.urls)),
+    path('', root_route),
     path('admin/', admin.site.urls),
     path('', include('profiles.urls')),
     path('', include('todo.urls')),
