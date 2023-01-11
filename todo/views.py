@@ -1,9 +1,8 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from rest_framework import permissions, filters, generics
 from .serializers import TaskSerializer
 from .models import Task
-from profiles import views
-from profiles import serializers
 from django_api.permissions import IsOwnerOrReadOnly
 
 
@@ -27,6 +26,22 @@ def apiOverview(request):
 def taskList(request):
     tasks = Task.objects.all()
     serializer = TaskSerializer(tasks, many = True)
+    filter_backends = [
+        filters.OrderingFilter,
+        filters.SearchFilter,
+    ]
+    ordering_fields = [
+        'created_by',
+        'due_date',
+    ]
+    search_fields = [
+        'title',
+        'due_date',
+        'created_by',
+        'assigned_to',
+        'completed',
+    ]
+
     return Response(serializer.data)
 
 """
@@ -40,7 +55,7 @@ def taskDetail(request, pk):
 
 "Update single post"
 
-@api_view(['GET', 'POST'])
+@api_view(['POST'])
 def taskUpdate(request, pk):
     task = Task.objects.get(id = pk)
     serializer = TaskSerializer(instance=task, data=request.data)
