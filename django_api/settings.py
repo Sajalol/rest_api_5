@@ -54,7 +54,7 @@ DEBUG = 'DEV' in os.environ
 
 ALLOWED_HOSTS = ['localhost', 'rest-api-project5.herokuapp.com']
 
-CSRF_TRUSTED_ORIGINS = ['https://8000-sajalol-restapi5-fnqkrokp54i.ws-eu81.gitpod.io', 'https://*.127.0.0.1', 'https://rest-api-project5.herokuapp.com', 'rest-api-project5.herokuapp.com']
+CSRF_TRUSTED_ORIGINS = ['https://8000-sajalol-restapi5-fnqkrokp54i.ws-eu81.gitpod.io', 'https://*.127.0.0.1', 'https://rest-api-project5.herokuapp.com']
 
 # Application definition
 
