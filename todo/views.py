@@ -21,12 +21,13 @@ def apiOverview(request):
     }
     return Response(api_urls)
 
-"Get "
+"Get tasklist and create a search filter "
 
-@api_view(['GET'])
-def taskList(request):
+class TaskList(generics.ListAPIView):
+
     tasks = Task.objects.all()
-    serializer = TaskSerializer(tasks, many = True)
+    serializer_class = TaskSerializer
+    queryset = Task.objects.all()
     filter_backends = [
         filters.OrderingFilter,
         filters.SearchFilter,
@@ -37,18 +38,21 @@ def taskList(request):
         'assigned_to',
         'category',
         'priority',
+        'completed',
     ]
     search_fields = [
-        'due_date',
-        'created_by',
+        'title',
     ]
     ordering_fields = [
+        'due_date',
+        'assigned_to',
         'category',
         'priority',
-        'task__created_at',
+        'completed',
     ]
 
-    return Response(serializer.data)
+    def perform_create(self, serializer):
+        return Response(serializer.data)
 
 """
 This Function going to display Detailed view of one perticuler task with the help of pk.
