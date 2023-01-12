@@ -1,5 +1,6 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import permissions, filters, generics
 from .serializers import TaskSerializer
 from .models import Task
@@ -29,17 +30,22 @@ def taskList(request):
     filter_backends = [
         filters.OrderingFilter,
         filters.SearchFilter,
+        DjangoFilterBackend,
     ]
-    ordering_fields = [
-        'created_by',
+    filterset_fields = [
         'due_date',
+        'assigned_to',
+        'category',
+        'priority',
     ]
     search_fields = [
-        'title',
         'due_date',
         'created_by',
-        'assigned_to',
-        'completed',
+    ]
+    ordering_fields = [
+        'category',
+        'priority',
+        'task__created_at',
     ]
 
     return Response(serializer.data)

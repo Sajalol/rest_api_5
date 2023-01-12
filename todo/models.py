@@ -1,9 +1,20 @@
 from django.db import models
 from django.contrib.auth.models import User
+from cloudinary.models import CloudinaryField
+from django.core import validators
+from django.core.validators import MinValueValidator, MaxValueValidator
 import datetime
 # Create your models here.
 
 class Task(models.Model):
+    CATEGORIES = (
+        (0, 'Backend'),
+        (1, 'Frontend'),
+        (2, 'Database'),
+        (3, 'Python'),
+        (4, 'Javascript'),
+    )
+
     title = models.CharField(max_length=200)
     content = models.TextField(blank=True)
     due_date = models.DateField(default=datetime.date.today,)
@@ -22,7 +33,9 @@ class Task(models.Model):
         on_delete=models.CASCADE,
     )
     attachements = models.FileField(upload_to='images/', blank=True)
-    completed = models.BooleanField(default=False, blank=True,       null=True)
+    category = models.IntegerField(choices=CATEGORIES, default=0)
+    priority = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)], default=5,)
+    completed = models.BooleanField(default=False, blank=True, null=True)
     objects = models.Manager()
 
     def __str__(self):
