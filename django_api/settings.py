@@ -58,7 +58,7 @@ ALLOWED_HOSTS = [
    'localhost',
 ]
 
-CSRF_TRUSTED_ORIGINS = ['https://8000-sajalol-restapi5-fnqkrokp54i.ws-eu81.gitpod.io', 'https://*.127.0.0.1', 'https://rest-api-project5.herokuapp.com']
+CSRF_TRUSTED_ORIGINS = ['https://8000-sajalol-restapi5-fnqkrokp54i.ws-eu83.gitpod.io', 'https://*.127.0.0.1', 'https://rest-api-project5.herokuapp.com']
 
 # Application definition
 
