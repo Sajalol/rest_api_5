@@ -54,7 +54,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = 'DEV' in os.environ
 
 ALLOWED_HOSTS = [
-   'https://rest-api-project5.herokuapp.com',
+   'rest-api-project5.herokuapp.com',
    'localhost',
 ]
 
