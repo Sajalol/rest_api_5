@@ -54,9 +54,9 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = 'DEV' in os.environ
 
 ALLOWED_HOSTS = [
-   'rest-api-project5.herokuapp.com',
-   '8080-sajalol-api5reactlatest-6lkr8jy6cr3.ws-eu84.gitpod.io'
-   'localhost',
+    'localhost',
+    'rest-api-project5.herokuapp.com',
+    '8000-sajalol-restapi5-fnqkrokp54i.ws-eu84.gitpod.io'
 ]
 
 CSRF_TRUSTED_ORIGINS = ['https://8000-sajalol-restapi5-fnqkrokp54i.ws-eu84.gitpod.io', 'https://*.127.0.0.1', 'https://rest-api-project5.herokuapp.com', 'https://8080-sajalol-api5reactlatest-6lkr8jy6cr3.ws-eu84.gitpod.io']
@@ -100,11 +100,14 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-if 'CLIENT_ORIGIN_DEV' in os.environ:
-    extracted_url = re.match(r'^.+-', os.environ.get('CLIENT_ORIGIN_DEV', ''), re.IGNORECASE).group(0)
-    CORS_ALLOWED_ORIGIN_REGEXES = [
-        rf"{extracted_url}(eu|us)\d+\w\.gitpod\.io$",
-    ]
+if 'CLIENT_ORIGIN' in os.environ:
+     CORS_ALLOWED_ORIGINS = [
+         os.environ.get('CLIENT_ORIGIN')
+     ]
+else:
+     CORS_ALLOWED_ORIGIN_REGEXES = [
+         r"^https://.*\.gitpod\.io$",
+     ]
 
 CORS_ALLOW_CREDENTIALS = True
 
