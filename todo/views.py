@@ -76,7 +76,7 @@ def taskUpdate(request, pk):
 
 "Creating new posts"
 
-@api_view(['POST'])
+@api_view(['GET', 'POST'])
 def taskCreate(request):
     serializer = TaskSerializer(data=request.data)
     if serializer.is_valid():
