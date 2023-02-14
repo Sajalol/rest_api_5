@@ -57,9 +57,10 @@ ALLOWED_HOSTS = [
     'localhost',
     'rest-api-project5.herokuapp.com',
     '8000-sajalol-restapi5-fnqkrokp54i.ws-eu84.gitpod.io'
+    '3000-sajalol-project5reactla-vswz1565vpw.ws-eu86.gitpod.io'
 ]
 
-CSRF_TRUSTED_ORIGINS = ['https://8000-sajalol-restapi5-fnqkrokp54i.ws-eu85.gitpod.io', 'https://*.127.0.0.1', 'https://rest-api-project5.herokuapp.com', 'https://8080-sajalol-api5reactlatest-6lkr8jy6cr3.ws-eu84.gitpod.io']
+CSRF_TRUSTED_ORIGINS = ['https://8000-sajalol-restapi5-fnqkrokp54i.ws-eu85.gitpod.io', 'https://*.127.0.0.1', 'https://rest-api-project5.herokuapp.com', 'https://8080-sajalol-api5reactlatest-6lkr8jy6cr3.ws-eu84.gitpod.io', 'https://3000-sajalol-project5reactla-vswz1565vpw.ws-eu86.gitpod.io']
 
 # Application definition
 
