@@ -8,4 +8,5 @@ urlpatterns = [
     path('todo/task-update/<int:pk>/', views.taskUpdate, name="task-update"),
     path('todo/task-create/', views.taskCreate, name="Task-Create"),
     path('todo/task-delete/<int:pk>/', views.taskDelete, name="task-delete"),
+    path('todo/users/', views.all_users, name='get_users'),
   ]

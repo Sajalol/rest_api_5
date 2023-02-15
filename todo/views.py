@@ -5,6 +5,10 @@ from rest_framework import permissions, filters, generics
 from .serializers import TaskSerializer
 from .models import Task
 from django_api.permissions import IsOwnerOrReadOnly
+from django.contrib.auth.models import User
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework import serializers
 
 
 """
@@ -91,3 +95,15 @@ def taskDelete(request, pk):
     task = Task.objects.get(id = pk)
     task.delete()
     return Response("Task deleted successfully.")
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['id', 'username','first_name', 'last_name', 'email']
+
+
+@api_view(['GET'])
+def all_users(request):
+    users = User.objects.all()
+    serialized_users = UserSerializer(users, many=True)
+    return Response(serialized_users.data)
