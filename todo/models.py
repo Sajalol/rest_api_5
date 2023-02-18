@@ -35,6 +35,7 @@ class Task(models.Model):
     attachements = models.FileField(upload_to='images/', blank=True)
     category = models.IntegerField(choices=CATEGORIES, default=0)
     priority = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)], default=5,)
+    completed_percentage = models.IntegerField(default=0)
     completed = models.BooleanField(default=False, blank=True, null=True)
     objects = models.Manager()
 

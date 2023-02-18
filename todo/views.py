@@ -30,7 +30,6 @@ def apiOverview(request):
 
 class TaskList(generics.ListAPIView):
 
-    tasks = Task.objects.all()
     serializer_class = TaskSerializer
     queryset = Task.objects.all()
     filter_backends = [
@@ -58,6 +57,18 @@ class TaskList(generics.ListAPIView):
 
     def perform_create(self, serializer):
         return Response(serializer.data)
+        
+    def get_serializer_class(self):
+        if self.request.method == 'POST':
+            return TaskCreateSerializer
+        else:
+            return TaskSerializer
+
+    def get_serializer_context(self):
+        context = super().get_serializer_context()
+        if self.request.method == 'POST':
+            context.update({"user": self.request.user})
+        return context
 
 """
 This Function going to display Detailed view of one perticuler task with the help of pk.
@@ -72,10 +83,23 @@ def taskDetail(request, pk):
 
 @api_view(['POST'])
 def taskUpdate(request, pk):
-    task = Task.objects.get(id = pk)
+    task = Task.objects.get(id=pk)
     serializer = TaskSerializer(instance=task, data=request.data)
     if serializer.is_valid():
+        completed_subtasks = 0
+        total_subtasks = task.subtasks.count()
+
+        for subtask in task.subtasks.all():
+            if subtask.completed:
+                completed_subtasks += 1
+
+        if total_subtasks == 0:
+            task.completed_percentage = 0
+        else:
+            task.completed_percentage = int((completed_subtasks / total_subtasks) * 100)
+
         serializer.save()
+
     return Response(serializer.data)
 
 
