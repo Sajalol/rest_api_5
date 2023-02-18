@@ -9,6 +9,7 @@ from django.contrib.auth.models import User
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import serializers
+from django.shortcuts import get_object_or_404
 
 
 """
@@ -96,6 +97,8 @@ def taskDelete(request, pk):
     task.delete()
     return Response("Task deleted successfully.")
 
+"Show all users"
+
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
@@ -107,3 +110,13 @@ def all_users(request):
     users = User.objects.all()
     serialized_users = UserSerializer(users, many=True)
     return Response(serialized_users.data)
+
+
+
+"User detailed view"
+
+@api_view(['GET'])
+def user_detail(request, pk):
+    user = get_object_or_404(User, pk=pk)
+    serializer = UserSerializer(user)
+    return Response(serializer.data)
