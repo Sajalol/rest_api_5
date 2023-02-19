@@ -81,10 +81,11 @@ def taskDetail(request, pk):
 
 "Update single post"
 
-@api_view(['POST'])
+@api_view(['PUT', 'PATCH', 'GET'])
 def taskUpdate(request, pk):
     task = Task.objects.get(id=pk)
-    serializer = TaskSerializer(instance=task, data=request.data)
+
+    serializer = TaskSerializer(instance=task, data=request.data, partial=True)
     if serializer.is_valid():
         completed_subtasks = 0
         total_subtasks = task.subtasks.count()
