@@ -12,6 +12,24 @@ from rest_framework import serializers
 from django.shortcuts import get_object_or_404
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
+from rest_framework.permissions import BasePermission, SAFE_METHODS
+import logging
+
+logger = logging.getLogger(__name__)
+
+
+class IsOwnerOrReadOnly(BasePermission):
+    """
+    Custom permission to only allow owners of an object to edit it.
+    """
+    def has_object_permission(self, request, view, obj):
+        # Read permissions are allowed to any request,
+        # so we'll always allow GET, HEAD or OPTIONS requests.
+        if request.method in SAFE_METHODS:
+            return True
+
+        # Write permissions are only allowed to the owner of the task.
+        return obj.created_by == request.user
 
 
 """
@@ -81,30 +99,25 @@ def taskDetail(request, pk):
     serializer = TaskSerializer(tasks, many = False)
     return Response(serializer.data)
 
-"Update single post"
 
+
+"Update single post"
 @api_view(['PUT', 'PATCH', 'GET'])
 @permission_classes([IsAuthenticated, IsOwnerOrReadOnly])
 def taskUpdate(request, pk):
+    logger.info("Incoming request data: %s", request.data)
+    
     task = Task.objects.get(id=pk)
-
     serializer = TaskSerializer(instance=task, data=request.data, partial=True)
+    
     if serializer.is_valid():
-        completed_subtasks = 0
-        total_subtasks = task.subtasks.count()
-
-        for subtask in task.subtasks.all():
-            if subtask.completed:
-                completed_subtasks += 1
-
-        if total_subtasks == 0:
-            task.completed_percentage = 0
-        else:
-            task.completed_percentage = int((completed_subtasks / total_subtasks) * 100)
-
         serializer.save()
 
-    return Response(serializer.data)
+        logger.info("Response data: %s", serializer.data)
+        return Response(serializer.data)
+    else:
+        logger.error("Invalid request data: %s", serializer.errors)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 "Creating new posts"
