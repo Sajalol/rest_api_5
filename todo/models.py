@@ -32,7 +32,7 @@ class Task(models.Model):
         related_name="todo_assigned_to",
         on_delete=models.CASCADE,
     )
-    attachments = models.FileField(upload_to='images/', blank=True)
+    attachments = models.FileField(upload_to='images/', blank=True, null=True)
     category = models.IntegerField(choices=CATEGORIES, default=0)
     priority = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)], default=5,)
     completed_percentage = models.IntegerField(default=0)
