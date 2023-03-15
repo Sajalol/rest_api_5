@@ -25,11 +25,11 @@ MEDIA_URL ='/media/'
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': [(
-        'rest_framework.authentication.SessionAuthentication'
-        if 'DEV' in os.environ
-        else 'dj_rest_auth.jwt_auth.JWTCookieAuthentication'
-    )],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        ('rest_framework.authentication.SessionAuthentication'
+         if 'DEV' in os.environ
+         else 'rest_framework_simplejwt.authentication.JWTAuthentication'),  # Updated
+    ],
     'DEFAULT_PAGINATION_CLASS':
         'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 10,
@@ -56,11 +56,11 @@ DEBUG = 'DEV' in os.environ
 ALLOWED_HOSTS = [
     'localhost',
     'rest-api-project5.herokuapp.com',
-    '8000-sajalol-restapi5-fnqkrokp54i.ws-eu84.gitpod.io'
+    '8000-sajalol-restapi5-fnqkrokp54i.ws-eu84.gitpod.io',
     '3000-sajalol-project5reactla-vswz1565vpw.ws-eu86.gitpod.io'
 ]
 
-CSRF_TRUSTED_ORIGINS = ['https://8000-sajalol-restapi5-fnqkrokp54i.ws-eu88.gitpod.io', 'https://*.127.0.0.1', 'https://rest-api-project5.herokuapp.com', 'https://8080-sajalol-api5reactlatest-6lkr8jy6cr3.ws-eu84.gitpod.io', 'https://3000-sajalol-project5reactla-vswz1565vpw.ws-eu86.gitpod.io']
+CSRF_TRUSTED_ORIGINS = ['https://8000-sajalol-restapi5-fnqkrokp54i.ws-eu90.gitpod.io', 'https://*.127.0.0.1', 'https://rest-api-project5.herokuapp.com', 'https://8080-sajalol-api5reactlatest-6lkr8jy6cr3.ws-eu84.gitpod.io', 'https://3000-sajalol-project5reactla-vswz1565vpw.ws-eu86.gitpod.io']
 
 # Application definition
 
@@ -77,13 +77,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_filters',
     'rest_framework.authtoken',
-    'dj_rest_auth',
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-    'dj_rest_auth.registration',
     'corsheaders',
-
     'profiles',
     'todo',
     ]
