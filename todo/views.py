@@ -1,3 +1,4 @@
+from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import permissions, filters, generics
@@ -156,16 +157,3 @@ def user_detail(request, pk):
     user = get_object_or_404(User, pk=pk)
     serializer = UserSerializer(user)
     return Response(serializer.data)
-
-
-"Current logged in user"
-
-@api_view(['GET'])
-@permission_classes([IsAuthenticated])
-def current_user(request):
-    user = request.user
-    return Response({
-        'id': user.id,
-        'username': user.username,
-        'email': user.email,
-    })
