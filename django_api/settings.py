@@ -91,8 +91,8 @@ INSTALLED_APPS = [
 SITE_ID = 1
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -109,6 +109,10 @@ if 'CLIENT_ORIGIN_DEV' in os.environ:
 
 LOGIN_REDIRECT_URL = '/todo'
 CORS_ALLOW_CREDENTIALS = True
+
+CORS_ALLOWED_ORIGINS = [
+    "https://project-5-react.herokuapp.com",
+]
 
 REST_USE_JWT = True
 
