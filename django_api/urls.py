@@ -39,7 +39,6 @@ router.register(r'users', UserViewSet)
 urlpatterns = [
     path('', root_route),
     path('admin/', admin.site.urls),
-    path('', include('profiles.urls')),
     path('', include('todo.urls')),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('dj-rest-auth/', include('dj_rest_auth.urls')),
