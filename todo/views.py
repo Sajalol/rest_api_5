@@ -13,7 +13,6 @@ from django.shortcuts import get_object_or_404
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.permissions import BasePermission, SAFE_METHODS
-from django.db.models import Q
 import logging
 
 logger = logging.getLogger(__name__)
@@ -48,32 +47,33 @@ def apiOverview(request):
 class TaskList(generics.ListAPIView):
 
     serializer_class = TaskSerializer
+    queryset = Task.objects.all()
+    filter_backends = [
+        filters.OrderingFilter,
+        filters.SearchFilter,
+        DjangoFilterBackend,
+    ]
+    filterset_fields = [
+        'due_date',
+        'assigned_to',
+        'category',
+        'priority',
+        'completed',
+    ]
+    search_fields = [
+        'title',
+    ]
+    ordering_fields = [
+        'due_date',
+        'assigned_to',
+        'category',
+        'priority',
+        'completed',
+    ]
 
-    def get_queryset(self):
-        assigned_to = self.request.GET.get('assigned_to')
-        search = self.request.GET.get('search')
-        priority_filter = self.request.GET.get('priority_filter')
-        category_filter = self.request.GET.get('category_filter')
-        sort_field = self.request.GET.get('sort_field')
-        sort_order = self.request.GET.get('sort_order')
-
-        queryset = Task.objects.filter(assigned_to=assigned_to)
-
-        if search:
-            queryset = queryset.filter(Q(title__icontains=search) | Q(content__icontains=search))
-
-        if priority_filter:
-            queryset = queryset.filter(priority=priority_filter)
-
-        if category_filter:
-            queryset = queryset.filter(category=category_filter)
-
-        if sort_field and sort_order:
-            sort_prefix = '' if sort_order == 'asc' else '-'
-            queryset = queryset.order_by(f'{sort_prefix}{sort_field}')
-
-        return queryset
-
+    def perform_create(self, serializer):
+        return Response(serializer.data)
+        
     def get_serializer_class(self):
         if self.request.method == 'POST':
             return TaskCreateSerializer
