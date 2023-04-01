@@ -56,11 +56,12 @@ DEBUG = 'DEV' in os.environ
 ALLOWED_HOSTS = [
     'localhost',
     'rest-api-project5.herokuapp.com',
-    '8000-sajalol-restapi5-fnqkrokp54i.ws-eu84.gitpod.io'
-    '3000-sajalol-project5reactla-vswz1565vpw.ws-eu86.gitpod.io'
+    '8000-sajalol-restapi5-fnqkrokp54i.ws-eu84.gitpod.io',
+    '3000-sajalol-project5reactla-vswz1565vpw.ws-eu86.gitpod.io',
+    '8000-sajalol-restapi5-fnqkrokp54i.ws-eu93.gitpod.io'
 ]
 
-CSRF_TRUSTED_ORIGINS = ['https://8000-sajalol-restapi5-fnqkrokp54i.ws-eu88.gitpod.io', 'https://*.127.0.0.1', 'https://rest-api-project5.herokuapp.com', 'https://8080-sajalol-api5reactlatest-6lkr8jy6cr3.ws-eu84.gitpod.io', 'https://3000-sajalol-project5reactla-vswz1565vpw.ws-eu86.gitpod.io']
+CSRF_TRUSTED_ORIGINS = ['https://8000-sajalol-restapi5-fnqkrokp54i.ws-eu88.gitpod.io', 'https://*.127.0.0.1', 'https://rest-api-project5.herokuapp.com', 'https://8080-sajalol-api5reactlatest-6lkr8jy6cr3.ws-eu84.gitpod.io', 'https://8000-sajalol-restapi5-fnqkrokp54i.ws-eu93.gitpod.io']
 
 # Application definition
 
@@ -99,6 +100,10 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+AUTHENTICATION_BACKENDS = (
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
 
 if 'CLIENT_ORIGIN_DEV' in os.environ:
     extracted_url = re.match(r'^.+-', os.environ.get('CLIENT_ORIGIN_DEV', ''), re.IGNORECASE).group(0)
