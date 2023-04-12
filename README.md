@@ -2,6 +2,8 @@
 
 The Task Manager is a comprehensive web application that helps users manage their tasks with ease and efficiency. Designed with a Django REST API backend and a React frontend, this application streamlines task organization and management by providing a user-friendly interface and a variety of features to enhance productivity. Ideal for individuals, teams, or organizations, the Task Manager allows users to create, update, and delete tasks, while also offering advanced features such as task filtering, searching, sorting, and file attachment support. With a focus on user management and authentication, the application ensures a secure and personalized experience for each user. This repository provides all the necessary information and resources to set up and deploy the Task Manager application.
 
+<br>
+
 ## Table of Contents
 
 1. [Features](#features)
@@ -14,6 +16,8 @@ The Task Manager is a comprehensive web application that helps users manage thei
 8. [Frontend](#frontend-installation)
 9. [Credits](#credits)
 
+<br>
+
 ## Features
 
 - Task management (create, read, update, and delete tasks)
@@ -21,6 +25,8 @@ The Task Manager is a comprehensive web application that helps users manage thei
 - User management and authentication
 - File attachment support
 - Custom permissions
+
+<br>
 
 ## API Functionality
 
@@ -51,6 +57,8 @@ The Django REST API for React Task Manager provides the following key features:
    Example: To access the admin interface, navigate to `/admin` and log in with an admin account. Once logged in, you can manage tasks, users, and other application data.
 
 
+<br>
+
 ## Installation
 
 1. Clone the repository:
@@ -62,6 +70,8 @@ cd to the top folder
 
 pip install -r requirements.txt
 
+
+<br>
 
 ## Configuration
 
@@ -75,6 +85,9 @@ Create a .env file in the root of the project with the following variables:
 
 Replace your-secret-key, your-database-url, and your-cloudinary-url with the appropriate values for your project.
 
+
+<br>
+
 ## Running the Application
 
 1. Apply the migrations:
@@ -86,6 +99,9 @@ python manage.py migrate
 python manage.py runserver
 
 The API should now be accessible at http://127.0.0.1:8000/.
+
+
+<br>
 
 ## API Endpoints
 
@@ -100,6 +116,9 @@ The API should now be accessible at http://127.0.0.1:8000/.
 - /admin - Admin login page
 - /api-auth/login/ - user login (admin will also work here)
 
+
+<br>
+
 ## Technologies Used
 
 - Django
@@ -107,6 +126,8 @@ The API should now be accessible at http://127.0.0.1:8000/.
 - PostgreSQL
 - Cloudinary
 
+
+<br>
 
 ## Testing
 
@@ -129,6 +150,9 @@ The API should now be accessible at http://127.0.0.1:8000/.
    - Test how the application handles incorrect input or missing data.
    - Test error messages and status codes.
 
+
+<br>
+
 ## Testing endpoints
 - Testing creating tasks from /todo/task-create/ working as intended, and they showing up /todo/task-list/.
 - Testing task updates works as intended in /todo/task-update/<int:pk>/, and checking they getting updated in /todo/task-list/
@@ -140,6 +164,8 @@ The API should now be accessible at http://127.0.0.1:8000/.
 - Testing login in /api-auth/login/ works as intended
 
 
+
+<br>
 
 ## Deployment
 
@@ -184,11 +210,17 @@ The API should now be accessible at http://127.0.0.1:8000/.
 4. Connect your Heroku app to your GitHub repository and enable automatic deploys.
 5. Deploy your app by triggering a manual deploy.
 
+
+<br>
+
 ## Additional Deployment Notes
 
 - Make sure to set the environment variables for both the backend and frontend deployments, such as the `SECRET_KEY`, `API_URL`, and any other necessary variables.
 - Remember to run `collectstatic` for the Django app to serve static files in production.
 - Configure CORS settings in the Django backend to allow requests from the React frontend.
+
+
+<br>
 
 ## Frontend Installation
 
@@ -196,6 +228,9 @@ The API should now be accessible at http://127.0.0.1:8000/.
 
 2. Once the backend server is running, proceed to set up the frontend by following the instructions in the [frontend repository](https://github.com/Sajalol/project-5-react-latest).
 
+
+
+<br>
 
 ## Credits
 
