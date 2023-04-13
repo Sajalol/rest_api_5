@@ -6,15 +6,16 @@ The Task Manager is a comprehensive web application that helps users manage thei
 
 ## Table of Contents
 
-1. [Features](#features)
-2. [Installation](#installation)
-3. [Configuration](#configuration)
-4. [Running the Application](#running-the-application)
-5. [API Endpoints](#api-endpoints)
-6. [Technologies Used](#technologies-used)
-7. [Deployment](#deployment)
-8. [Frontend](#frontend-installation)
-9. [Credits](#credits)
+1.  [Features](#features)
+2.  [Installation](#installation)
+3.  [Configuration](#configuration)
+4.  [Running the Application](#running-the-application)
+5.  [API Endpoints](#api-endpoints)
+6.  [Technologies Used](#technologies-used)
+7.  [Usernames](#usernames)
+8.  [Deployment](#deployment)
+9.  [Frontend](#frontend-installation)
+10. [Credits](#credits)
 
 <br>
 
@@ -163,7 +164,14 @@ The API should now be accessible at http://127.0.0.1:8000/.
 - When creating new users, checking they showing up in /todo/users lists
 - Testing login in /api-auth/login/ works as intended
 
+<br>
 
+
+## Usernames
+
+- User 1:  Username: User1   / Password: Project5Test
+- User 2:  Username: User2   / Password: Project5Test
+- User 3:  Username: User3   / Password: Project5Test
 
 <br>
 
