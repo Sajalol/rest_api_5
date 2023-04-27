@@ -15,7 +15,8 @@ The Task Manager is a comprehensive web application that helps users manage thei
 7.  [Usernames](#usernames)
 8.  [Deployment](#deployment)
 9.  [Frontend](#frontend-installation)
-10. [Credits](#credits)
+10. [Agile-Process](#agile-process)
+11. [Credits](#credits)
 
 <br>
 
@@ -239,6 +240,38 @@ The API should now be accessible at http://127.0.0.1:8000/.
 
 
 <br>
+
+
+# Agile Process
+
+## User Stories and Epics
+- We maintain a list of user stories and epics in this README file. Each user story includes a clear description and acceptance criteria. User stories are grouped under their corresponding epics.
+
+### Epic 1: Task Management
+* [x] Done
+<br>
+- As a user, I want to be able to create a new task so that I can keep track of my to-do list.
+- As a user, I want to be able to view a list of all my tasks so that I can see what I need to do.
+- As a user, I want to be able to update a task so that I can change the details of a task if necessary.
+- As a user, I want to be able to delete a task so that I can remove tasks that are no longer relevant.
+- As a user, I want to be able to filter, search, and sort my tasks so that I can easily find the tasks I need.
+
+### Epic 2: User Management and Authentication
+* [x] Done
+<br>
+- As a user, I want to be able to register for an account so that I can create a personalized task list.
+- As a user, I want to be able to log in to my account so that I can access my tasks.
+- As a user, I want to be able to view my account details so that I can see my personal information.
+- As a user, I want to be able to log out of my account so that I can end my session.
+
+## Progress Tracking
+
+### To track the progress of user stories, we use the following status labels:
+
+- To Do: This status is assigned to user stories that have not yet been started.
+- In Progress: This status is assigned to user stories that are currently being worked on.
+- In Review: This status is assigned to user stories that have been completed and are awaiting review.
+- Done: This status is assigned to user stories that have been completed and reviewed
 
 ## Credits
 
