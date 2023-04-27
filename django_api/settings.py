@@ -32,7 +32,7 @@ REST_FRAMEWORK = {
     )],
     'DEFAULT_PAGINATION_CLASS':
         'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 10,
+    'PAGE_SIZE': 100,
     'DATETIME_FORMAT': '%d %b %Y',
 }
 if 'DEV' not in os.environ:
@@ -61,7 +61,7 @@ ALLOWED_HOSTS = [
     '8000-sajalol-restapi5-fnqkrokp54i.ws-eu93.gitpod.io'
 ]
 
-CSRF_TRUSTED_ORIGINS = ['https://8000-sajalol-restapi5-fnqkrokp54i.ws-eu88.gitpod.io', 'https://*.127.0.0.1', 'https://rest-api-project5.herokuapp.com', 'https://8080-sajalol-api5reactlatest-6lkr8jy6cr3.ws-eu84.gitpod.io', 'https://8000-sajalol-restapi5-fnqkrokp54i.ws-eu93.gitpod.io']
+CSRF_TRUSTED_ORIGINS = ['https://8000-sajalol-restapi5-fnqkrokp54i.ws-eu95.gitpod.io', 'https://*.127.0.0.1', 'https://rest-api-project5.herokuapp.com', 'https://8080-sajalol-api5reactlatest-6lkr8jy6cr3.ws-eu84.gitpod.io', 'https://8000-sajalol-restapi5-fnqkrokp54i.ws-eu93.gitpod.io']
 
 # Application definition
 
