@@ -16,7 +16,8 @@ The Task Manager is a comprehensive web application that helps users manage thei
 8.  [Deployment](#deployment)
 9.  [Frontend](#frontend-installation)
 10. [Agile-Process](#agile-process)
-11. [Credits](#credits)
+11. [Deployment-Links](#deployment-links)
+12. [Credits](#credits)
 
 <br>
 
@@ -36,27 +37,30 @@ The Django REST API for React Task Manager provides the following key features:
 
 1. **Task Management**: Users can create, read, update, and delete tasks through the API endpoints. Tasks can also be filtered, searched, and sorted according to different criteria.
 
-   Example: To create a new task, make a POST request to `/todo/task-create/` with the required task data in the request body.
+   * Example: To create a new task, make a POST request to `/todo/task-create/` with the required task data in the request body.
 
 2. **User Management and Authentication**: The API handles user registration, authentication, and management. It provides endpoints for user registration, login, and user detail retrieval.
 
-   Example: To register a new user, follow the instructions provided by Django's built-in authentication views for user registration. Typically, this involves submitting a registration form, which creates a new user in the database. Or create a new user through `/admin` 
+3. **Adding Users through Django Admin Panel**: Administrators can add users directly through the Django admin panel. This allows them to create users with specific roles and permissions without requiring the user to go through the registration process.
+
+   * Example: To add a new user through the Django admin panel, navigate to `/admin` and log in with an admin account. Once logged in, go to the "Users" section and click "Add User." Fill out the required fields, such as the username and password, and set the desired user permissions. Click "Save" to create the new user.
+
 
 3. **File Attachment Support**: Users can attach files to tasks, which are stored using Cloudinary. The API provides endpoints for uploading and managing these files.
 
-   Example: To attach a file to a task, include the file in the request body when making a POST or PUT request to the appropriate task-related endpoint.
+   * Example: To attach a file to a task, include the file in the request body when making a POST or PUT request to the appropriate task-related endpoint.
 
 4. **Custom Permissions**: The API implements custom permissions to ensure that users can only access and modify their own tasks and account details.
 
-   Example: A user without admin permissions cannot access or modify another user's tasks or account details.
+   * Example: A user without admin permissions cannot access or modify another user's tasks or account details.
 
 5. **Pagination**: The API supports pagination for task lists to improve performance and user experience when dealing with large sets of tasks.
 
-   Example: When requesting a list of tasks at `/todo/task-list/`, the response will be paginated. To navigate through pages, use the `page` query parameter in the request URL (e.g., `/todo/task-list/?page=2`).
+   * Example: When requesting a list of tasks at `/todo/task-list/`, the response will be paginated. To navigate through pages, use the `page` query parameter in the request URL (e.g., `/todo/task-list/?page=2`).
 
 6. **Admin Interface**: The Django REST API provides an admin interface for managing tasks, users, and other application data. Administrators can access the admin panel to create, update, and delete tasks, as well as manage users and their permissions.
 
-   Example: To access the admin interface, navigate to `/admin` and log in with an admin account. Once logged in, you can manage tasks, users, and other application data.
+   * Example: To access the admin interface, navigate to `/admin` and log in with an admin account. Once logged in, you can manage tasks, users, and other application data.
 
 
 <br>
@@ -255,14 +259,16 @@ The API should now be accessible at http://127.0.0.1:8000/.
 - As a user, I want to be able to update a task so that I can change the details of a task if necessary.
 - As a user, I want to be able to delete a task so that I can remove tasks that are no longer relevant.
 - As a user, I want to be able to filter, search, and sort my tasks so that I can easily find the tasks I need.
+- As a admin, I want to be able to have a overview off all tasks.
+- As a admin, I want to be able to delete tasks from admin view
 
 ### Epic 2: User Management and Authentication
 * [x] Done
 <br>
-- As a user, I want to be able to register for an account so that I can create a personalized task list.
 - As a user, I want to be able to log in to my account so that I can access my tasks.
 - As a user, I want to be able to view my account details so that I can see my personal information.
 - As a user, I want to be able to log out of my account so that I can end my session.
+- As a admin, I want to be able to create users and have full user control.
 
 ## Progress Tracking
 
@@ -272,6 +278,14 @@ The API should now be accessible at http://127.0.0.1:8000/.
 - In Progress: This status is assigned to user stories that are currently being worked on.
 - In Review: This status is assigned to user stories that have been completed and are awaiting review.
 - Done: This status is assigned to user stories that have been completed and reviewed
+<br>
+
+## Deployment links
+
+- [Django Rest API](https://rest-api-project5.herokuapp.com/)
+- [React Front End](https://project-5-react.herokuapp.com/)
+
+<br>
 
 ## Credits
 
