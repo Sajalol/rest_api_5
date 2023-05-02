@@ -2,7 +2,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import permissions, filters, generics
-from .serializers import TaskSerializer
+from .serializers import TaskSerializer, UserCreateSerializer, UserSerializer
 from .models import Task
 from django_api.permissions import IsOwnerOrReadOnly
 from django.contrib.auth.models import User
@@ -157,3 +157,15 @@ def user_detail(request, pk):
     user = get_object_or_404(User, pk=pk)
     serializer = UserSerializer(user)
     return Response(serializer.data)
+
+
+"Create user"
+
+@api_view(['POST'])
+@permission_classes([IsAdminUser])
+def create_user(request):
+    serializer = UserCreateSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data)
+    return Response(serializer.errors, status=400)
