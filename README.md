@@ -13,6 +13,7 @@ The Task Manager is a comprehensive web application that helps users manage thei
 5.  [API Endpoints](#api-endpoints)
 6.  [Technologies Used](#technologies-used)
 7.  [Usernames](#usernames)
+8.  [Add users](#adding-users-through-django-admin-panel)
 8.  [Deployment](#deployment)
 9.  [Frontend](#frontend-installation)
 10. [Agile-Process](#agile-process)
@@ -46,19 +47,19 @@ The Django REST API for React Task Manager provides the following key features:
    * Example: To add a new user through the Django admin panel, navigate to `/admin` and log in with an admin account. Once logged in, go to the "Users" section and click "Add User." Fill out the required fields, such as the username and password, and set the desired user permissions. Click "Save" to create the new user.
 
 
-3. **File Attachment Support**: Users can attach files to tasks, which are stored using Cloudinary. The API provides endpoints for uploading and managing these files.
+4. **File Attachment Support**: Users can attach files to tasks, which are stored using Cloudinary. The API provides endpoints for uploading and managing these files.
 
    * Example: To attach a file to a task, include the file in the request body when making a POST or PUT request to the appropriate task-related endpoint.
 
-4. **Custom Permissions**: The API implements custom permissions to ensure that users can only access and modify their own tasks and account details.
+5. **Custom Permissions**: The API implements custom permissions to ensure that users can only access and modify their own tasks and account details.
 
    * Example: A user without admin permissions cannot access or modify another user's tasks or account details.
 
-5. **Pagination**: The API supports pagination for task lists to improve performance and user experience when dealing with large sets of tasks.
+6. **Pagination**: The API supports pagination for task lists to improve performance and user experience when dealing with large sets of tasks.
 
    * Example: When requesting a list of tasks at `/todo/task-list/`, the response will be paginated. To navigate through pages, use the `page` query parameter in the request URL (e.g., `/todo/task-list/?page=2`).
 
-6. **Admin Interface**: The Django REST API provides an admin interface for managing tasks, users, and other application data. Administrators can access the admin panel to create, update, and delete tasks, as well as manage users and their permissions.
+7. **Admin Interface**: The Django REST API provides an admin interface for managing tasks, users, and other application data. Administrators can access the admin panel to create, update, and delete tasks, as well as manage users and their permissions.
 
    * Example: To access the admin interface, navigate to `/admin` and log in with an admin account. Once logged in, you can manage tasks, users, and other application data.
 
@@ -180,6 +181,13 @@ The API should now be accessible at http://127.0.0.1:8000/.
 
 <br>
 
+## Adding Users through Django Admin Panel
+- Administrators can add users directly through the Django admin panel. This allows them to create users with specific roles and permissions without requiring the user to go through the registration process.
+
+* Example: To add a new user through the Django admin panel, navigate to /admin and log in with an admin account. Once logged in, go to the "Users" section and click "Add User.Fill out the required fields, such as the username and password, and set the desired user permissions. Click "Save" to create the new user.
+
+<br>
+
 ## Deployment
 
 ## Backend Deployment
@@ -195,6 +203,9 @@ The API should now be accessible at http://127.0.0.1:8000/.
     - DISABLED_COLLECTSTATIC / 1
     - HEROKU_POSTGRESQL_JADE_URL / ** Postgres url **
     - SECRET_KEY / ** Secret key **
+    - CLOUDINARY_API_KEY / ** API KEY **
+    - CLOUDINARY_API_SECRET / ** API SECRET **
+    - CLOUDINARY_CLOUD_NAME / ** CLOUD_NAME **
       * Requirement.txt file should look something like this:
          - asgiref==3.6.0
          - backports.zoneinfo;python_version<"3.9"
@@ -231,6 +242,16 @@ The API should now be accessible at http://127.0.0.1:8000/.
 - Make sure to set the environment variables for both the backend and frontend deployments, such as the `SECRET_KEY`, `API_URL`, and any other necessary variables.
 - Remember to run `collectstatic` for the Django app to serve static files in production.
 - Configure CORS settings in the Django backend to allow requests from the React frontend.
+- Create a "env.py" file, and make sure its added to the .gitignore
+- env.py file should include:
+      - import os
+      - os.environ['CLOUDINARY_URL'] = ""
+      - os.environ.setdefault("DATABASE_URL", "")
+      - os.environ['DEV'] = '1'
+      - os.environ.setdefault("SECRET_KEY", "")
+      - os.environ['CLOUDINARY_API_KEY'] = ''
+      - os.environ['CLOUDINARY_API_SECRET'] = ''
+      - os.environ['CLOUDINARY_CLOUD_NAME'] = ''
 
 
 <br>
