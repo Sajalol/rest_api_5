@@ -161,7 +161,7 @@ def user_detail(request, pk):
 
 "Create user"
 
-@api_view(['POST, GET'])
+@api_view(['POST', 'GET'])
 @permission_classes([IsAdminUser])
 def create_user(request):
     if request.method == 'POST':
