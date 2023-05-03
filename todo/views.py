@@ -161,11 +161,14 @@ def user_detail(request, pk):
 
 "Create user"
 
-@api_view(['POST'])
+@api_view(['POST, GET'])
 @permission_classes([IsAdminUser])
 def create_user(request):
-    serializer = UserCreateSerializer(data=request.data)
-    if serializer.is_valid():
-        serializer.save()
-        return Response(serializer.data)
-    return Response(serializer.errors, status=400)
+    if request.method == 'POST':
+        serializer = UserCreateSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=400)
+    else:
+        return Response(status=405) 
