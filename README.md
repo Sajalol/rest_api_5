@@ -275,6 +275,7 @@ The API should now be accessible at http://127.0.0.1:8000/.
 ### Epic 1: Task Management
 * [x] Done
 <br>
+
 - As a user, I want to be able to create a new task so that I can keep track of my to-do list.
 - As a user, I want to be able to view a list of all my tasks so that I can see what I need to do.
 - As a user, I want to be able to update a task so that I can change the details of a task if necessary.
@@ -286,10 +287,22 @@ The API should now be accessible at http://127.0.0.1:8000/.
 ### Epic 2: User Management and Authentication
 * [x] Done
 <br>
+
 - As a user, I want to be able to log in to my account so that I can access my tasks.
 - As a user, I want to be able to view my account details so that I can see my personal information.
 - As a user, I want to be able to log out of my account so that I can end my session.
 - As a admin, I want to be able to create users and have full user control.
+
+### Epic 3: User Creation
+*[x] Done
+<br>
+
+- As a system admin, I want to create a new user to provide access to the system.
+- Define the user model and its fields
+- Create an API endpoint for user creation
+- Implement the serializer for user creation
+- Add validation and error handling
+- Only let admins create users
 
 ## Progress Tracking
 
