@@ -4,5 +4,8 @@ from rest_framework.response import Response
 @api_view()
 def root_route(request):
     return Response({
-        "message": "Welcome to my API Page"
+        "message"   : "Welcome to my API Page",
+        "Login"     : "api-auth/login/",
+        "todo app"  : "/todo",
+        "Admin app" : "/admin",
     })

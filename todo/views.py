@@ -39,7 +39,7 @@ def apiOverview(request):
         'Create' : '/task-create/',
         'Update' : '/task-update/<int:pk>/',
         'Delete' : '/task-delete/<int:pk>/',
-        'Create user': 'users/create/',
+        'Create user': '/users/create/',
     }
     return Response(api_urls)
 
